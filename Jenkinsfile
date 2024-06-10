@@ -2,6 +2,10 @@ pipeline {
     agent {
         label 'agent1'
     }
+      options {
+        timeout(time: 1, unit: 'SECONDS')
+        skipStagesAfterUnstable()
+    }
     stages {
         stage('Build') {
             steps {
@@ -13,6 +17,7 @@ pipeline {
             steps {
                 //
                 sh 'echo This is Test'
+                sh'sleep 10'
             }
         }
         stage('Deploy') {
