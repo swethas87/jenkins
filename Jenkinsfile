@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'agent1'
+        label any
     }
       options {
         timeout(time: 30, unit: 'MINUTES')
@@ -37,5 +37,19 @@ pipeline {
                 sh 'echo This is Deploy'
             }
         }
+            stage('Print Params') {
+            steps {
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
+            }
+        
     }
-}
+        }
+    }
